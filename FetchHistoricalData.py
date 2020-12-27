@@ -1,5 +1,6 @@
 #
-# Original script is from cryptodatadownload.com
+# Original script come from cryptodatadownload.com tutorial
+# https://www.cryptodatadownload.com/blog/how-to-download-coinbase-price-data.html
 #
 #
 # First import the libraries that we need to use
@@ -12,11 +13,11 @@ import json
 def fetch_daily_data(symbol):
     pair_split = symbol.split('/')  # symbol must be in format XXX/XXX ie. BTC/EUR
     symbol = pair_split[0] + '-' + pair_split[1]
-    # Supported granularities are 1,5,15 minutes -  1,6 hours and 1 day
-    #  60  300  900  3600  21600  86400
+    # Supported granularities are 1,5,15 - minutes  1,6 - hours and 1 day
+    #  60  300  900  3600  21600  86400 seconds respectively.
     granularity='60' # 1 minute granularity
-    # start and end parameters are optional and should be either omitted or close enough 
-    # to fit into 300 data points with specific granularity
+    # start and end parameters are optional and could be either omitted or should be close enough 
+    # to fit into 300 data points frame with a specific granularity
     # example: https://api.pro.coinbase.com/products/LTC-USD/candles?granularity=60
     #          https://api.pro.coinbase.com/products/LTC-USD/candles?granularity=60&start=2020-12-20T10:34:47&end=2020-12-20T13:15:00    
     # Time should be in ISO8601 format like that 2020-12-20T13:15:00.00Z.
